@@ -6,9 +6,12 @@ const port=3000;
 const app=express();
 app.use(bodyparser.json());
 
-app.get('/',(req,res)=>{
-  res.send("hello world");
+
+app.get('/answer',(req,res)=>{
+  axios.get('https://api.stackexchange.com/2.3/answers?page=5&pagesize=5&order=desc&sort=activity&site=stackoverflow').then(resp => res.send(resp.data)); 
+
 })
+
 
 
 
